@@ -25,6 +25,7 @@ var bodyParser = require('body-parser');
 var app = express();
 var apiRoutes = express.Router();
 var product = require('./server/controllers/product');
+var verification = require('./server/controllers/verification');
 
 app.use(logger('dev'));
 app.use(bodyParser.json());
@@ -38,28 +39,29 @@ app.use(function (req, res, next) {
 });
 
 //Add a new product
-apiRoutes.post('/products', authentication.verifyToken, function (req, res) {
+apiRoutes.post('/products', verification.verifyToken, function (req, res) {
   product.createProducts(req, res);
 });
+
 apiRoutes.post('/api', function (req, res) {
   product.getApiData(req, res);
 });
 
-apiRoutes.get('/products', authentication.verifyToken, function (req, res) {
+apiRoutes.get('/products', verification.verifyToken, function (req, res) {
   product.getAllProducts(req, res);
 });
-apiRoutes.get('/general-products', authentication.verifyToken, function (req, res) {
+apiRoutes.get('/general-products', verification.verifyToken, function (req, res) {
   product.getAllProductsPublicAcess(req, res);
 });
 
-apiRoutes.get('/products/:id', authentication.verifyToken, function (req, res) {
+apiRoutes.get('/products/:id', verification.verifyToken, function (req, res) {
   product.getProduct(req, res);
 });
-apiRoutes.put('/products/:id', authentication.verifyToken, function (req, res) {
+apiRoutes.put('/products/:id', verification.verifyToken, function (req, res) {
   product.updateProduct(req, res);
 });
 
-apiRoutes.delete('/products/:id', authentication.verifyToken, function (req, res) {
+apiRoutes.delete('/products/:id', verification.verifyToken, function (req, res) {
   product.deleteProduct(req, res);
 });
 apiRoutes.get('/', (req, res) => res.status(200).send({

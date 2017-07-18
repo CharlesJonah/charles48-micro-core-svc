@@ -1,6 +1,6 @@
 
 const Product = require('../../server/models/product'); // get our mongoose model
-const app = require('../../app')
+const app = require('../../app');
 const client = [
     {
         "id": "-KlcUIvHwSbjP0bL1u2c",
