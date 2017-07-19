@@ -339,8 +339,10 @@ module.exports = {
     },
     getApiData(req, res) {
         let clientId = req.body.text;
+        console.log(req.body)
         client.forEach((item) => {
             if (item.id === clientId) {
+
                 res.status(200).send("This channel for client " + "`" + item.name + "`" + " has been succesfully integrated with pulse");
             }
         })
