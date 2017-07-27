@@ -342,8 +342,9 @@ module.exports = {
         console.log(req.body)
         client.forEach((item) => {
             if (item.id === clientId) {
+                res(200, 'This is okay');
 
-                res.status(200).send("This channel for client " + "`" + item.name + "`" + " has been succesfully integrated with pulse");
+                // res.status(200).send("This channel for client " + "`" + item.name + "`" + " has been succesfully integrated with pulse");
             }
         })
         // res.status(200).send("A client with the ID " + "`" + clientId + "`" + " has not been found, please check if the ID is correct");
