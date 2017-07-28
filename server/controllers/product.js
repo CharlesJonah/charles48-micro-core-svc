@@ -339,6 +339,7 @@ module.exports = {
     },
     getApiData(req, res) {
         let clientId = req.body.text;
+        console.log(req)
         console.log(req.body)
         client.forEach((item) => {
             if (item.id === clientId) {
